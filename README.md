@@ -36,5 +36,5 @@ Uno **script Python** per analizzare ed elaborare un export JSON di Bitwarden, c
 Input JSON -> [Item type=1?] -> NO -> Skipped
                                -> YES
                                -> [Username+Password già presenti?]
-                                     -> NO -> Aggiungi ai duplicati
+                                     -> NO -> Aggiungi
                                      -> YES -> Merge URI e rimuovi duplicato
