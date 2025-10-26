@@ -45,7 +45,7 @@ Input JSON -> [Item type=1?] -> NO -> Skipped
 ---
 ## Requisiti / Requirements
 
-Python 3.7+, moduli/modules: json, re, datetime, os, urllib.parse
+Python 3.7+, moduli / modules: json, re, datetime, os, urllib.parse
 
 ---
 ## Utilizzo / Usage
