@@ -1,40 +1,62 @@
-# Bitwarden Login Merge Tool
+# Bitwarden Vault cleanup Tool / Strumento di cleanup di un vault Bitwarden
 
 ![Python](https://img.shields.io/badge/python-3.7+-blue.svg) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Uno **script Python** per analizzare ed elaborare un export JSON di Bitwarden, concentrandosi sui **Login (`type=1`)**. Gestisce duplicati basati su username, password e URI, unisce gli URI condivisi e mantiene un log dettagliato.
+Uno **script Python** per analizzare ed elaborare un export JSON di Bitwarden, concentrandosi sui **Login (`type=1`)**. Gestisce duplicati basati su username, password e URI, unisce gli URI condivisi e mantiene un log dettagliato.  
+
+A **Python script** to analyze and process a Bitwarden JSON export, focusing on **Login items (`type=1`)**. It handles duplicates based on username, password, and URI, merges shared URIs, and keeps a detailed log.
 
 ---
 
-## Tipi di item Bitwarden
+## Tipi di item Bitwarden / Bitwarden Item Types
 
-| Tipo | Valore `type` | Descrizione |
-|------|---------------|------------|
-| Login | 1 | Credenziali di accesso (username, password, URI) |
-| Secure Note | 2 | Note sicure testuali |
-| Card | 3 | Dati di carte di pagamento |
-| Identity | 4 | Informazioni personali (nome, indirizzo, ecc.) |
+| Tipo / Type | Valore `type` / Type Value | Descrizione / Description |
+|------------|---------------------------|---------------------------|
+| Login | 1 | Credenziali di accesso (username, password, URI) / Access credentials |
+| Secure Note | 2 | Note sicure testuali / Secure text notes |
+| Card | 3 | Dati di carte di pagamento / Payment card details |
+| Identity | 4 | Informazioni personali / Personal information |
 
-> Lo script **analizza solo i Login (`type=1`)**. Tutti gli altri tipi vengono ignorati.
-
----
-
-## Funzionalità principali
-
-- ✅ Analizza solo Login, ignorando gli altri tipi  
-- ✅ Mantiene account senza URI  
-- ✅ Identifica duplicati su **username + password + URI condivisi**  
-- ✅ Merge automatico degli URI tra account duplicati  
-- ✅ Salvataggio incrementale e log dettagliato  
-- ✅ Possibilità di scegliere **file di input/output** all’avvio  
+> Lo script **analizza solo i Login (`type=1`)**. Tutti gli altri tipi vengono ignorati.  
+> The script **processes only Login items (`type=1`)**. All other types are ignored.
 
 ---
 
-## Flusso di merge (diagramma semplificato)
+## Funzionalità principali / Features
+
+- ✅ Analizza solo Login, ignorando gli altri tipi / Only analyzes Login items  
+- ✅ Mantiene account senza URI / Keeps accounts even without URIs  
+- ✅ Identifica duplicati su **username + password + URI condivisi** / Detects duplicates on username + password + shared URIs  
+- ✅ Merge automatico degli URI tra account duplicati / Automatically merges URIs of duplicate accounts  
+- ✅ Salvataggio incrementale e log dettagliato / Incremental save and detailed logging  
+- ✅ Possibilità di scegliere **file di input/output** all’avvio / Allows choosing input/output files at runtime  
+
+---
+
+## Flusso di pulizia / Cleanup Flow (diagramma semplificato / simplified diagram)
 
 ```text
 Input JSON -> [Item type=1?] -> NO -> Skipped
                                -> YES
-                               -> [Username+Password già presenti?]
-                                     -> NO -> Aggiungi
-                                     -> YES -> Merge URI e rimuovi duplicato
+                               -> [Username+Password already exists?]
+                                     -> NO -> Add to duplicates
+                                     -> YES -> Merge URIs and remove duplicate
+```
+---
+## Requisiti / Requirements
+
+Python 3.7+, moduli/modules: json, re, datetime, os, urllib.parse
+
+---
+## Utilizzo / Usage
+
+Clona il repository / Clone the repository:
+```
+git clone <URL_REPO>
+cd <REPO_NAME>
+```
+Esegui lo script / Run the script:
+```
+python bitwarden_merge.py
+```
+---
