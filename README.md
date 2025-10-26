@@ -50,12 +50,15 @@ Python 3.7+, moduli / modules: json, re, datetime, os, urllib.parse
 ---
 ## Utilizzo / Usage
 
-Clona il repository / Clone the repository:
+1. Clona il repository / Clone the repository:
 ```
 git clone <URL_REPO>
 cd <REPO_NAME>
 ```
-Esegui lo script / Run the script:
+
+2. Esporta il vault in formato .json / Export the vault in .json format
+
+3. Esegui lo script / Run the script:
 ```
 python bitwarden_merge.py
 ```
