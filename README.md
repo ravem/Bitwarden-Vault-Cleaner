@@ -39,7 +39,7 @@ A **Python script** to analyze and process a Bitwarden JSON export, focusing on 
 Input JSON -> [Item type=1?] -> NO -> Skipped
                                -> YES
                                -> [Username+Password already exists?]
-                                     -> NO -> Add to duplicates
+                                     -> NO -> Add to vault
                                      -> YES -> Merge URIs and remove duplicate
 ```
 ---
